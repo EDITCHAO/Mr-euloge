@@ -503,7 +503,7 @@ h3.my-profession
 .about .about-content .experience
 {
     flex: 0 0 50%;
-    max-width: 180%;
+    max-width: 50%;
     margin-top: 30px;
 }
 .about .about-content h3.title
@@ -776,7 +776,7 @@ h3.my-profession
     }
     .aside
     {
-       left: -270px;
+       left: -250px;
        width: 250px;
     }
     .aside.open{
@@ -789,7 +789,7 @@ h3.my-profession
     }
     .aside .nav-toggler.open
     {
-        left: 300px;
+        left: 280px;
     }
     .section
     {
@@ -799,7 +799,7 @@ h3.my-profession
     }
     .section.open
     {
-    left: 270px;
+    left: 250px;
     }
     .about .about-content .personal-info .info-item p span
     {
@@ -914,6 +914,52 @@ h3.my-profession
     }
     .aside .logo a span {
         font-size: 30px;
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        font-size: 12px;
+    }
+    .btn {
+        padding: 6px 15px;
+        font-size: 10px;
+    }
+    .aside {
+        width: 180px;
+    }
+    .section {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .home .home-info h3.hello,
+    .home .home-info h3.my-profession {
+        font-size: 18px;
+    }
+    .about .about-content .about-text h3,
+    .about .about-content h3.title {
+        font-size: 18px;
+    }
+    .section-title h2 {
+        font-size: 30px;
+    }
+    .aside .logo a {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+    .aside .logo a span {
+        font-size: 25px;
+    }
+    .home .home-img img {
+        max-width: 250px;
+    }
+    .portfolio .portfolio-item-inner {
+        height: auto;
+        min-height: 200px;
+    }
+    .aside .nav-toggler {
+        height: 35px;
+        width: 40px;
     }
 }
 

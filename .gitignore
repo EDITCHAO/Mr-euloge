@@ -1,0 +1,51 @@
+# Configuration de la base de données (contient des mots de passe)
+backend/config.php
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*.old
+*.tmp
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+error_log
+
+# Fichiers temporaires de l'éditeur
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Dossiers de cache
+cache/
+tmp/
+temp/
+
+# Fichiers uploadés par les utilisateurs (si vous en ajoutez)
+uploads/
+user_files/
+
+# Node modules (si vous utilisez npm)
+node_modules/
+package-lock.json
+
+# Composer (si vous utilisez Composer)
+vendor/
+composer.lock
+
+# Environnement
+.env
+.env.local
+.env.production
+
+# Fichiers SQL de backup
+*.sql.gz
+backup_*.sql
+dump_*.sql

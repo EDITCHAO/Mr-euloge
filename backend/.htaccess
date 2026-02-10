@@ -1,0 +1,17 @@
+# Protéger les fichiers de configuration
+<Files "config.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Empêcher l'accès direct aux fichiers SQL
+<Files "*.sql">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Autoriser uniquement l'accès aux fichiers PHP nécessaires
+<FilesMatch "^(contact_handler)\.php$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>

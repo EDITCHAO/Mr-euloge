@@ -1,0 +1,31 @@
+/* Style pour le bouton Admin dans la sidebar */
+.aside .nav li:last-child a {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.aside .nav li:last-child a:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.aside .nav li:last-child a i {
+    color: white !important;
+}
+
+/* Animation pour attirer l'attention */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+    }
+}
+
+.aside .nav li:last-child a {
+    animation: pulse 2s infinite;
+}

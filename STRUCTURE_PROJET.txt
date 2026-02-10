@@ -1,0 +1,247 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    PORTFOLIO MR EULOGE - STRUCTURE DU PROJET                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📁 RACINE DU PROJET
+│
+├── 📄 index.php                          ← Page principale (point d'entrée)
+├── 📄 .htaccess                          ← Configuration Apache
+├── 📄 .gitignore                         ← Fichiers à ignorer par Git
+├── 📄 LICENSE                            ← Licence MIT
+│
+├── 📚 DOCUMENTATION
+│   ├── 📄 README.md                      ← Documentation principale
+│   ├── 📄 GUIDE_RAPIDE.md                ← Démarrage en 3 minutes
+│   ├── 📄 INSTRUCTIONS_INSTALLATION.md   ← Guide complet d'installation
+│   ├── 📄 RESUME_MODIFICATIONS.md        ← Détails des modifications
+│   ├── 📄 DEPLOIEMENT.md                 ← Guide de déploiement
+│   ├── 📄 TODO.md                        ← Tâches à faire
+│   └── 📄 STRUCTURE_PROJET.txt           ← Ce fichier
+│
+├── 🔧 BACKEND (Code PHP serveur)
+│   ├── 📁 admin/
+│   │   └── 📄 view_messages.php          ← Interface pour voir les messages
+│   │
+│   ├── 📄 config.php                     ← Configuration base de données
+│   ├── 📄 config.example.php             ← Exemple de configuration
+│   ├── 📄 contact_handler.php            ← Traitement du formulaire
+│   ├── 📄 create_database.sql            ← Script SQL pour créer la DB
+│   ├── 📄 test_connection.php            ← Test de connexion à la DB
+│   ├── 📄 .htaccess                      ← Sécurité backend
+│   └── 📄 README.md                      ← Documentation backend
+│
+├── 🎨 FRONTEND (Sections du site)
+│   ├── 📄 home.php                       ← Section Accueil
+│   ├── 📄 about.php                      ← Section À propos
+│   ├── 📄 service.php                    ← Section Services
+│   ├── 📄 portfolio.php                  ← Section Portfolio
+│   └── 📄 contact.php                    ← Section Contact + Formulaire
+│
+├── 🎨 CSS (Styles)
+│   ├── 📁 skins/
+│   │   ├── 📄 color-1.css                ← Thème Rouge (défaut)
+│   │   ├── 📄 color-2.css                ← Thème Bleu
+│   │   ├── 📄 color-3.css                ← Thème Vert
+│   │   ├── 📄 color-4.css                ← Thème Orange
+│   │   └── 📄 color-5.css                ← Thème Violet
+│   │
+│   ├── 📄 style.css                      ← Styles principaux
+│   └── 📄 style-switcher.css             ← Styles du changeur de thème
+│
+├── ⚡ JS (Scripts JavaScript)
+│   ├── 📄 script.js                      ← Scripts principaux
+│   └── 📄 style-switcher.js              ← Changeur de thème
+│
+├── 🖼️ IMAGES
+│   ├── 📁 portfolio/
+│   │   ├── 🖼️ MOI.jpeg                   ← Photo principale
+│   │   ├── 🖼️ MOI2.jpeg
+│   │   └── 🖼️ WhatsApp Image *.jpeg      ← Projets portfolio
+│   │
+│   └── 🖼️ logo.jpeg                      ← Logo du site
+│
+└── 📁 .claude/                           ← Configuration Kiro (IDE)
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              FLUX DE DONNÉES                                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────┐
+│  VISITEUR   │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              index.php                                      │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  <?php include 'frontend/home.php'; ?>                              │   │
+│  │  <?php include 'frontend/about.php'; ?>                             │   │
+│  │  <?php include 'frontend/service.php'; ?>                           │   │
+│  │  <?php include 'frontend/portfolio.php'; ?>                         │   │
+│  │  <?php include 'frontend/contact.php'; ?>                           │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────┘
+       │
+       │ (Formulaire soumis)
+       ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      backend/contact_handler.php                            │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  1. Récupération des données POST                                   │   │
+│  │  2. Validation (nom, email, sujet, message)                         │   │
+│  │  3. Protection contre injections SQL                                │   │
+│  │  4. Insertion dans la base de données                               │   │
+│  │  5. Retour JSON (succès/erreur)                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         MySQL Database                                      │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  Base : portfolio_mr_euloge                                         │   │
+│  │  Table : contacts                                                   │   │
+│  │    - id (INT AUTO_INCREMENT)                                        │   │
+│  │    - name (VARCHAR)                                                 │   │
+│  │    - email (VARCHAR)                                                │   │
+│  │    - subject (VARCHAR)                                              │   │
+│  │    - message (TEXT)                                                 │   │
+│  │    - created_at (DATETIME)                                          │   │
+│  │    - is_read (BOOLEAN)                                              │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────┘
+       │
+       │ (Consultation)
+       ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    backend/admin/view_messages.php                          │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  Affichage de tous les messages dans un tableau HTML               │   │
+│  │  - Date de réception                                                │   │
+│  │  - Nom de l'expéditeur                                              │   │
+│  │  - Email                                                            │   │
+│  │  - Sujet                                                            │   │
+│  │  - Message                                                          │   │
+│  │  - Statut (lu/non lu)                                               │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                           TECHNOLOGIES UTILISÉES                             ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ FRONTEND                                                                     │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  • HTML5                    - Structure sémantique                           │
+│  • CSS3                     - Styles modernes (Flexbox, Grid, Animations)    │
+│  • JavaScript (Vanilla)     - Interactivité sans framework                   │
+│  • Font Awesome 5.15.4      - Icônes vectorielles                            │
+│  • Typed.js 2.0.12          - Effet de frappe animé                          │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ BACKEND                                                                      │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  • PHP 7.4+                 - Langage serveur                                │
+│  • PDO                      - Accès sécurisé à la base de données            │
+│  • MySQL 5.7+ / MariaDB     - Système de gestion de base de données          │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SERVEUR                                                                      │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  • Apache 2.4+              - Serveur web                                    │
+│  • mod_rewrite              - Réécriture d'URL                               │
+│  • .htaccess                - Configuration et sécurité                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                            URLS IMPORTANTES                                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DÉVELOPPEMENT LOCAL                                                          │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  Portfolio principal    : http://localhost/portfolio/index.php               │
+│  Test connexion DB      : http://localhost/portfolio/backend/test_connection.php │
+│  Interface admin        : http://localhost/portfolio/backend/admin/view_messages.php │
+│  phpMyAdmin             : http://localhost/phpmyadmin                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         COMMANDES UTILES                                     ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SQL (phpMyAdmin)                                                             │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  Voir tous les messages :                                                    │
+│    SELECT * FROM contacts ORDER BY created_at DESC;                          │
+│                                                                              │
+│  Messages non lus :                                                          │
+│    SELECT * FROM contacts WHERE is_read = 0;                                 │
+│                                                                              │
+│  Marquer comme lu :                                                          │
+│    UPDATE contacts SET is_read = 1 WHERE id = 1;                             │
+│                                                                              │
+│  Supprimer les messages de test :                                           │
+│    DELETE FROM contacts WHERE email LIKE '%test%';                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         SÉCURITÉ IMPLÉMENTÉE                                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+✅ Requêtes SQL préparées (PDO) - Protection contre les injections SQL
+✅ Validation des données côté serveur
+✅ Échappement des sorties HTML - Protection XSS
+✅ .htaccess pour protéger les fichiers sensibles
+✅ Configuration sécurisée de PDO
+✅ Séparation frontend/backend
+✅ .gitignore pour ne pas commiter les mots de passe
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         RESPONSIVE BREAKPOINTS                               ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📱 Mobile Small     : 320px - 479px
+📱 Mobile           : 480px - 767px
+📱 Tablet           : 768px - 991px
+💻 Laptop           : 992px - 1199px
+🖥️ Desktop          : 1200px - 1399px
+🖥️ Large Desktop    : 1400px+
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              AUTEUR                                          ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+👤 Nom              : EDITCHAO Sam Euloge
+🏷️ Alias            : Mr Euloge
+💼 Profession       : Développeur Full Stack & Data Analyst
+📧 Email            : editchaosam@gmail.com
+📱 Téléphone        : +228 99 25 38 43
+🌍 Localisation     : Lomé, Togo
+🌐 Website          : www.Mr-euloge.com
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         VERSION & DATE                                       ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Version             : 2.0
+Date de création    : Février 2026
+Dernière mise à jour: Février 2026
+Licence             : MIT
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                    Fait avec ❤️ par Mr Euloge
+═══════════════════════════════════════════════════════════════════════════════
